@@ -9,19 +9,13 @@ public class Main {
         StringTokenizer st = new StringTokenizer(br.readLine(), " ");
         int[] arr = new int[N];
         int[] dp = new int[N];
-        ArrayList<ArrayList<Integer>> arrayList = new ArrayList<>();
         int max = -1;
-        for(int i = 0; i < N; i++) {
-            arr[i] = Integer.parseInt(st.nextToken());
-            arrayList.add(new ArrayList<>());
-        }
-        int index = 0;
+        for(int i = 0; i < N; i++) arr[i] = Integer.parseInt(st.nextToken());
         for(int i = 0; i < N; i++) {
             dp[i] = 1;
             for(int j = 0; j < i; j++) {
                 if(arr[j] < arr[i] && dp[i] < dp[j] + 1){
                     dp[i] = dp[j] + 1;
-                    arrayList.get(i).add(arr[j]);
                 }
             }
             max = Math.max(dp[i], max);
